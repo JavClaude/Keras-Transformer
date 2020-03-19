@@ -17,12 +17,12 @@ class EncoderLayer(tf.keras.layers.Layer):
     ------
 
     '''
-    def __init__(self = Int,
-                 d_model = Int,
-                 num_heads = Int,
-                 dff = Int,
+    def __init__(self = int,
+                 d_model = int,
+                 num_heads = int,
+                 dff = int,
                  return_attention = False,
-                 dropoutRate = Int,
+                 dropoutRate = int,
                  **kwargs):
         super(EncoderLayer, self).__init__(**kwargs)
         self.d_model = d_model
