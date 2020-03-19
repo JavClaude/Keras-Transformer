@@ -27,3 +27,5 @@ with tf.device('/device:GPU:0'):
 
 * Decoder Part
 * BPE-Tokenizer
+* requirements.txt
+* test
