@@ -1,5 +1,5 @@
 import tensorflow as tf
-from . import PositionalEncodingLayer, MultiHeadAttentionLayer, EncoderLayer, EncoderPoolerLayer
+import PositionalEncodingLayer, MultiHeadAttentionLayer, EncoderLayer, EncoderPoolerLayer
 
 class TransformerEncoder(tf.keras.layers.Layer):
     '''

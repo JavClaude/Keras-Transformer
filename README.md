@@ -22,3 +22,8 @@ Transformer.compile(optimizer="Adam", loss="categorical_crossentropy", metrics=[
 with tf.device('/device:GPU:0'):
     Transformer.fit(X_train, y_train, validation_split=0.1, callbacks=[CLR], batch_size=64, epochs=1)
 ```
+
+## To Do
+
+* Decoder Part
+* BPE-Tokenizer
