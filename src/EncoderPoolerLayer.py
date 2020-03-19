@@ -10,13 +10,15 @@ class EncoderPoolerLayer(tf.keras.layers.Layer):
 
     Parameters:
     -----------
-        *
+        * pooling_strategy:
+            - Average
+            - CLS
 
     Return
     ------
 
     '''
-    def __init__(self = int,
+    def __init__(self,
                  d_model = int,
                  pooling_activation = 'tanh',
                  pooling_strategy = str,

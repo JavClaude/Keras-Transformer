@@ -18,7 +18,6 @@ class PositionalEncoding(tf.keras.layers.Layer):
     '''
     def __init__(self,
                 input_vocab_size=int,
-                output_dim=int,
                 d_model=int,
                 maxposEncoding=int,
                 embedding_initializer='uniform',
@@ -29,7 +28,6 @@ class PositionalEncoding(tf.keras.layers.Layer):
         
         super(PositionalEncoding, self).__init__(**kwargs)
         self.input_vocab_size = input_vocab_size
-        self.output_dim = output_dim
         self.d_model = d_model
         self.maxposEncoding = maxposEncoding
         self.Embedding = tf.keras.layers.Embedding(self.input_vocab_size, self.d_model)

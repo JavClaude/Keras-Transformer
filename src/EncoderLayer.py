@@ -17,7 +17,7 @@ class EncoderLayer(tf.keras.layers.Layer):
     ------
 
     '''
-    def __init__(self = int,
+    def __init__(self,
                  d_model = int,
                  num_heads = int,
                  dff = int,
