@@ -41,7 +41,7 @@ class TransformerEncoderLayer(tf.keras.layers.Layer):
 
         self.Embedding = PositionalEncodingLayer(self.input_vocab_size, self.d_model, self.max_pos_encoding)
 
-        self.encoderLayers = [EncoderLayer(self.d_model, self.num_heads, self.dff, False, self.dropoutRate)]
+        self.encoderLayers = [EncoderLayer(self.d_model, self.num_heads, self.dff, False, self.dropoutRate) for _ in range(self.nlayers)]
 
         self.encoderPooler = EncoderPoolerLayer(self.d_model, self.pooling_activation, self.pooling_strategy)
 
