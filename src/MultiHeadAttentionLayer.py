@@ -11,12 +11,17 @@ class MultiHeadAttentionLayer(tf.keras.layers.Layer):
         * d_Model: Int, Dim of the hidden state
         * num_heads: Int, number of Head Attention
         * returb_MHA: Bool, 
+
+    Return
+    ------
+        * tensorOut: Tensor, of shape (batch, seq, d_model)
+
     '''
     def __init__(self,
-                d_model,
-                num_heads,
-                return_MHA = False,
-                kernel_initializer = 'glorot_normal',
+                d_model=int,
+                num_heads=int,
+                return_MHA=False,
+                kernel_initializer='glorot_normal',
                 kernel_regularizer = None, 
                 **kwargs):
         if 'input_shape' not in kwargs and 'input_dim' in kwargs:
@@ -58,6 +63,18 @@ class MultiHeadAttentionLayer(tf.keras.layers.Layer):
         mixedK = self._splitHeadAttention(mixedK, batch_size, input_size)
         mixedV = self._splitHeadAttention(mixedV, batch_size, input_size)
 
+        scaledAttention, attentionWeights = self._scaleDotProductAttention(mixedV, mixedQ, mixedK, mask)
+
+        scaledAttention = tf.transpose(scaledAttention, perm = [0, 2, 1, 3]) # (batch, seq, head, depth)
+
+        concatAttention = tf.reshape(scaledAttention, (batch_size, input_size, self.d_model)) # (batch, seq, d_model) ==> d_model = nheads*depth
+
+        output = self.unifyHeads(concatAttention)
+
+        if self.return_MHA:
+            return output, attentionWeights
+
+        return output
     
     def _scaleDotProductAttention(self, v, q, k, mask):
         '''
@@ -83,15 +100,11 @@ class MultiHeadAttentionLayer(tf.keras.layers.Layer):
         if mask is not None:
             scaledAttentionLogits += (mask * -1e9)
         
-        attention_weights = tf.nn.softmax(scaledAttentionLogits, axis=-1) #Softmax on K
+        attentionWeights = tf.nn.softmax(scaledAttentionLogits, axis=-1) #Softmax on K
 
-        tensorOut = tf.matmul(attention_weights, v)
-
-        if return_MHA:
-
-            return tensorOut, attention_weights
+        tensorOut = tf.matmul(attentionWeights, v)
         
-        return tensorOut
+        return tensorOut, attentionWeights
 
     
     def _splitHeadAttention(self, x, batch_size, input_size):

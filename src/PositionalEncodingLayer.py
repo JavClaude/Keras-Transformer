@@ -17,10 +17,10 @@ class PositionalEncoding(tf.keras.layers.Layer):
         * maxposEncoding: Int, max position to encode
     '''
     def __init__(self,
-                input_vocab_size=Int,
-                output_dim=Int,
-                d_model=Int,
-                maxposEncoding=Int,
+                input_vocab_size=int,
+                output_dim=int,
+                d_model=int,
+                maxposEncoding=int,
                 embedding_initializer='uniform',
                 activity_regularizer=None,
                 **kwargs):
