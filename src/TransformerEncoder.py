@@ -23,7 +23,7 @@ class TransformerEncoder(tf.keras.layers.Layer):
                  n_classes = int,
                  **kwargs):
         super(TransformerEncoder, self).__init__(**kwargs)
-        self.nlayers = self.num_encoder
+        self.nlayers = num_encoder
         self.d_model = d_model
         self.num_heads = num_heads
         self.dff = dff
