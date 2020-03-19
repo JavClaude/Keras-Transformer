@@ -1,5 +1,5 @@
-import MultiHeadAttentionLayer
-import PositionalEncodingLayer
+from MultiHeadAttention import MultiHeadAttentionLayer
+from PositionalEncoding import PositionalEncodingLayer
 import tensorflow as tf
 
 class EncoderPoolerLayer(tf.keras.layers.Layer):

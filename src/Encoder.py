@@ -1,5 +1,4 @@
-import MultiHeadAttentionLayer
-import PositionalEncodingLayer
+from MultiHeadAttention import MultiHeadAttentionLayer
 import tensorflow as tf
 
 class EncoderLayer(tf.keras.layers.Layer):

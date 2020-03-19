@@ -1,7 +1,9 @@
 import tensorflow as tf
-import PositionalEncodingLayer, MultiHeadAttentionLayer, EncoderLayer, EncoderPoolerLayer
+from PositionalEncoding import PositionalEncodingLayer
+from EncoderPooler import EncoderPoolerLayer
+from Encoder import EncoderLayer
 
-class TransformerEncoder(tf.keras.layers.Layer):
+class TransformerEncoderLayer(tf.keras.layers.Layer):
     '''
     Description
     -----------
@@ -22,7 +24,7 @@ class TransformerEncoder(tf.keras.layers.Layer):
                  pooling_strategy = str,
                  n_classes = int,
                  **kwargs):
-        super(TransformerEncoder, self).__init__(**kwargs)
+        super(TransformerEncoderLayer, self).__init__(**kwargs)
         self.nlayers = num_encoder
         self.d_model = d_model
         self.num_heads = num_heads

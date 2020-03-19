@@ -2,7 +2,7 @@ import numpy as np
 
 import tensorflow as tf
 
-class PositionalEncoding(tf.keras.layers.Layer):
+class PositionalEncodingLayer(tf.keras.layers.Layer):
     '''
     Description
     -----------
@@ -26,7 +26,7 @@ class PositionalEncoding(tf.keras.layers.Layer):
         if 'input_shape' not in kwargs and 'input_dim' in kwargs:
             kwargs['input_shape'] = (kwargs.pop('input_dim'),)
         
-        super(PositionalEncoding, self).__init__(**kwargs)
+        super(PositionalEncodingLayer, self).__init__(**kwargs)
         self.input_vocab_size = input_vocab_size
         self.d_model = d_model
         self.maxposEncoding = maxposEncoding
@@ -36,7 +36,7 @@ class PositionalEncoding(tf.keras.layers.Layer):
     def build(self, input_shape):
         assert len(input_shape) >= 2
         self.built = True
-        super(PositionalEncoding, self).build(input_shape)
+        super(PositionalEncodingLayer, self).build(input_shape)
 
     def call(self, x, mask):
         maxSeqLen = tf.shape(x)[1]
