@@ -52,7 +52,7 @@ class TransformerEncoderLayer(tf.keras.layers.Layer):
             self.logits = tf.keras.layers.Dense(n_classes, activation="sigmoid")
         
     def call(self, x, mask = None):
-        x = self.Embedding(x)
+        x = self.Embedding(x, mask)
 
         for i in list(range(self.nlayers)):
             x = self.encoderLayers[i](x, mask)

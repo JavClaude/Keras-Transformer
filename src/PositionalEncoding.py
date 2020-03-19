@@ -41,7 +41,7 @@ class PositionalEncodingLayer(tf.keras.layers.Layer):
     def call(self, x, mask):
         maxSeqLen = tf.shape(x)[1]
 
-        x = self.Embedding(x, mask)
+        x = self.Embedding(x)
 
         x *= tf.math.sqrt(tf.cast(self.d_model, tf.float32))
 
