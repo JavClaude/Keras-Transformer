@@ -86,7 +86,7 @@ class PositionalEncodingLayer(tf.keras.layers.Layer):
         freqPos[:, 0::2] = np.sin(freqPos[:, 0::2])
         freqPos[:, 1::2] = np.cos(freqPos[:, 1::2])
 
-        freqPos[np.newaxis, ...] #for batch dimension
+        freqPos = freqPos[np.newaxis, ...] #for batch dimension
 
         return tf.cast(freqPos, tf.float32)
 
