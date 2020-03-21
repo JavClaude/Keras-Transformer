@@ -14,7 +14,7 @@ M = create_padding_mask(I)
 T = transformerEncoderLayer(num_encoder=4,
                             d_model=768,
                             num_heads=8, 
-                            dff =1100, 
+                            dff=1100, 
                             input_vocab_size=len(tokenizer.vocab), 
                             maximim_position_encoding=512, 
                             dropoutRate=0.1, 
